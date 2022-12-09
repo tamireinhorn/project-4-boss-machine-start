@@ -1,4 +1,5 @@
 const ideasRouter = require('express').Router();
+const checkMillionDollarIdea = require('../checkMillionDollarIdea');
 const {
     createMeeting,
     getAllFromDatabase,
@@ -30,15 +31,13 @@ ideasRouter.get('/:ideaId', (req, res, next) => {
     res.send(req.idea);
 });
 
-ideasRouter.post('/', (req, res, next) => {
-    let idea = addToDatabase('ideas', req.body);
-    if (idea) {
-        res.status(201).send(idea);
-    }
+ideasRouter.post('/', checkMillionDollarIdea, (req, res, next) => {
+    res.status(201).send(addToDatabase('ideas', req.body));
     
-})
+    
+});
 
-ideasRouter.put('/:ideaId', (req, res, next) => {
+ideasRouter.put('/:ideaId', checkMillionDollarIdea, (req, res, next) => {
     let idea = updateInstanceInDatabase('ideas', req.body);
     res.send(idea);
 })
