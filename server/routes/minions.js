@@ -1,18 +1,10 @@
-
-
-// - `/api/minions`
-
-// - PUT /api/minions/:minionId to update a single minion by id.
-// - DELETE /api/minions/:minionId to delete a single minion by id.
 const minionsRouter = require('express').Router();
 const {
-    createMeeting,
     getAllFromDatabase,
     getFromDatabaseById,
     addToDatabase,
     updateInstanceInDatabase,
-    deleteFromDatabasebyId,
-    deleteAllFromDatabase,
+    deleteFromDatabasebyId
   } = require('../db');
 module.exports = minionsRouter;
 
