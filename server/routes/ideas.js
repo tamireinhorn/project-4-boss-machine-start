@@ -32,7 +32,10 @@ ideasRouter.get('/:ideaId', (req, res, next) => {
 
 ideasRouter.post('/', (req, res, next) => {
     let idea = addToDatabase('ideas', req.body);
-    res.status(201).send(idea);
+    if (idea) {
+        res.status(201).send(idea);
+    }
+    
 })
 
 ideasRouter.put('/:ideaId', (req, res, next) => {
